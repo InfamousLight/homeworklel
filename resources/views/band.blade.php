@@ -24,6 +24,10 @@
                     @else
                         <td>No</td>
                     @endif
+                    <td>
+                        <a href="{{ url('/band/edit-band/' . $band->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
+                        <button id="{{$band->id}}" type = "button" class="delete btn btn-danger delete-user">Delete</button>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

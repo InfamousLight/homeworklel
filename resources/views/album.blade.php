@@ -26,6 +26,10 @@
                     <td>{{$album->label}}</td>
                     <td>{{$album->producer}}</td>
                     <td>{{$album->genre}}</td>
+                    <td>
+                        <a href="{{ url('/album/edit-album/' . $album->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
+                        <button id="{{$album->id}}" type = "button" class="delete btn btn-danger delete-user">Delete</button>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

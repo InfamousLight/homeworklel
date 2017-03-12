@@ -11,5 +11,10 @@
 |
 */
 
+//Home Views
 Route::get('/', 'BandController@index');
 Route::get('album', 'AlbumController@index');
+
+//Edit Routes
+Route::get('/band/edit-band/{bandId}', 'BandController@edit');
+Route::get('/album/edit-album/{albumId}', 'AlbumController@edit');
