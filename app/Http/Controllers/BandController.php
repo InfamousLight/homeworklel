@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Carbon\Carbon;
 
 class BandController extends Controller
 {
@@ -11,6 +12,18 @@ class BandController extends Controller
     {
         $bands = DB::table('Band')->select()->get();
         return view('band')->with('bands', $bands);
+    }
+
+    public function create(Request $request)
+    {
+        DB::table('Band')->insert([
+            'name' =>  $request->input('band-name'),
+            'website' => $request->input('website'),
+            'start_date' => $request->input('start-date'),
+            'still_active' => $request->input('active'),
+        ]);
+
+        return $this->index();
     }
 
     public function edit($bandId)
