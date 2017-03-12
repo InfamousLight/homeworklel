@@ -18,3 +18,7 @@ Route::get('album', 'AlbumController@index');
 //Edit Routes
 Route::get('/band/edit-band/{bandId}', 'BandController@edit');
 Route::get('/album/edit-album/{albumId}', 'AlbumController@edit');
+
+//Delete Routes
+Route::post('/album/delete-album/', 'AlbumController@delete');
+Route::post('/band/delete-band/', 'BandController@delete');

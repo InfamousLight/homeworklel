@@ -18,4 +18,13 @@ class BandController extends Controller
         $band = DB::table('Band')->where('id', $bandId)->first();
         return view('edit-band')->with('band', $band);
     }
+
+    public function delete(Request $request)
+    {
+        $bandId = $request->input('bandId');
+        DB::table('Album')->where('band_id', '=', $bandId)->delete();
+        DB::table('Band')->where('id', '=', $bandId)->delete();
+
+        return $bandId;
+    }
 }

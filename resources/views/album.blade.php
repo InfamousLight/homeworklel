@@ -1,5 +1,7 @@
 @extends('app')
-
+@section('javascript')
+    <script type="text/javascript" src={{ URL::asset('js/AlbumList.js') }}></script>
+@stop
 @section('content')
     <div class="container">
         <table class="table">
@@ -17,7 +19,7 @@
             </thead>
             <tbody>
                 @foreach($albums as $album)
-                <tr>
+                <tr id="album-row-{{$album->id}}">
                     <th scope="row">{{$album->id}}</th>
                     <td>{{$album->name}}</td>
                     <td>{{$album->recorded_date}}</td>
@@ -28,7 +30,7 @@
                     <td>{{$album->genre}}</td>
                     <td>
                         <a href="{{ url('/album/edit-album/' . $album->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
-                        <button id="{{$album->id}}" type = "button" class="delete btn btn-danger delete-user">Delete</button>
+                        <button id="{{$album->id}}" type = "button" class="delete btn btn-danger delete-album">Delete</button>
                     </td>
                 </tr>
                 @endforeach
