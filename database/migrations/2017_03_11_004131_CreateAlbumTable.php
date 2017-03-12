@@ -15,8 +15,8 @@ class CreateAlbumTable extends Migration
     {
         Schema::create('Album', function (Blueprint $table) {
             $table->increments('id');
-            $table->primary('id');
-            $table->integer('band_id');
+            $table->integer('band_id')->unsigned();
+            $table->foreign('band_id')->references('id')->on('Band');
             $table->string('name');
             $table->date('recorded_date');
             $table->date('release_date');

@@ -22,4 +22,9 @@ class Album extends Model
         'producer',
         'genre',
     );
+
+    public function band()
+    {
+        return $this->belongsTo('App\Band');;
+    }
 }
