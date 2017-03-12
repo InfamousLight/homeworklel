@@ -11,14 +11,62 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Album Name</th>
-                    <th>Recorded Date</th>
-                    <th>Release Date</th>
-                    <th>Number of Tracks</th>
-                    <th>Label</th>
-                    <th>Producer</th>
-                    <th>Genre</th>
+                    <th>
+                        @if ($column == 'id' && $sort == 'asc')
+                            <a href="{{ url('/album', ['column'=>'id', 'sort'=>'desc'] ) }}">#</a>
+                        @else
+                            <a href="{{ url('/album', ['column'=>'id', 'sort'=>'asc'] ) }}">#</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if ($column == 'name' && $sort == 'asc')
+                            <a href="{{ url('/album', ['column'=>'name', 'sort'=>'desc'] ) }}">Album Name</a>
+                        @else
+                            <a href="{{ url('/album', ['column'=>'name', 'sort'=>'asc'] ) }}">Album Name</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if ($column == 'recorded_date' && $sort == 'asc')
+                            <a href="{{ url('/album', ['column'=>'recorded_date', 'sort'=>'desc'] ) }}">Recorded Date</a>
+                        @else
+                            <a href="{{ url('/album', ['column'=>'recorded_date', 'sort'=>'asc'] ) }}">Recorded Date</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if ($column == 'release_date' && $sort == 'asc')
+                            <a href="{{ url('/album', ['column'=>'release_date', 'sort'=>'desc'] ) }}">Release Date</a>
+                        @else
+                            <a href="{{ url('/album', ['column'=>'release_date', 'sort'=>'asc'] ) }}">Release Date</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if ($column == 'number_of_tracks' && $sort == 'asc')
+                            <a href="{{ url('/album', ['column'=>'number_of_tracks', 'sort'=>'desc'] ) }}">Number of Tracks</a>
+                        @else
+                            <a href="{{ url('/album', ['column'=>'number_of_tracks', 'sort'=>'asc'] ) }}">Number of Tracks</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if ($column == 'label' && $sort == 'asc')
+                            <a href="{{ url('/album', ['column'=>'label', 'sort'=>'desc'] ) }}">Label</a>
+                        @else
+                            <a href="{{ url('/album', ['column'=>'label', 'sort'=>'asc'] ) }}">Label</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if ($column == 'producer' && $sort == 'asc')
+                            <a href="{{ url('/album', ['column'=>'producer', 'sort'=>'desc'] ) }}">Producer</a>
+                        @else
+                            <a href="{{ url('/album', ['column'=>'producer', 'sort'=>'asc'] ) }}">Producer</a>
+                        @endif
+                    </th>
+                    <th>
+                        @if ($column == 'genre' && $sort == 'asc')
+                            <a href="{{ url('/album', ['column'=>'genre', 'sort'=>'desc'] ) }}">Genre</a>
+                        @else
+                            <a href="{{ url('/album', ['column'=>'genre', 'sort'=>'asc'] ) }}">Genre</a>
+                        @endif
+                    </th>
                 </tr>
             </thead>
             <tbody>

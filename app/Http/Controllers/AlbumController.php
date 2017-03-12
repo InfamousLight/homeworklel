@@ -7,10 +7,16 @@ use DB;
 
 class AlbumController extends Controller
 {
-    public function index()
+    public function index($column=null, $sort=null)
     {
-        $albums = DB::table('Album')->select()->get();
-        return view('album')->with('albums', $albums);
+        if($column && $sort) {
+            $albums = DB::table('Album')->select()->orderBy($column, $sort)->get();
+        }
+        else {
+            $albums = DB::table('Album')->select()->get();
+        }
+
+        return view('album')->with('albums', $albums)->with('column', $column)->with('sort', $sort);
     }
 
     public function create(Request $request)

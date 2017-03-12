@@ -8,10 +8,16 @@ use Carbon\Carbon;
 
 class BandController extends Controller
 {
-    public function index()
+    public function index($column=null, $sort=null)
     {
-        $bands = DB::table('Band')->select()->get();
-        return view('band')->with('bands', $bands);
+        if($column && $sort) {
+            $bands = DB::table('Band')->select()->orderBy($column, $sort)->get();
+        }
+        else {
+            $bands = DB::table('Band')->select()->get();
+        }
+
+        return view('band')->with('bands', $bands)->with('column', $column)->with('sort', $sort);
     }
 
     public function create(Request $request)

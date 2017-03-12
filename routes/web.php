@@ -30,3 +30,7 @@ Route::post('/band/delete-band/', 'BandController@delete');
 //Create Routes
 Route::post('/album/create-album/', 'AlbumController@create');
 Route::post('/band/create-band/', 'BandController@create');
+
+//Sorted Routes
+Route::get('/band/{column}/{sort}', 'BandController@index');
+Route::get('/album/{column}/{sort}', 'AlbumController@index');
