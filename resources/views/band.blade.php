@@ -13,37 +13,37 @@
                 <tr>
                     <th>
                         @if ($column == 'id' && $sort == 'asc')
-                            <a href="{{ url('/band', ['column'=>'id', 'sort'=>'desc'] ) }}">#</a>
+                            <a href="{{ url('/?column=id&order=desc') }}">#</a>
                         @else
-                            <a href="{{ url('/band', ['column'=>'id', 'sort'=>'asc'] ) }}">#</a>
+                            <a href="{{ url('/?column=id&order=asc') }}">#</a>
                         @endif
                     </th>
                     <th>
                         @if ($column == 'name' && $sort == 'asc')
-                            <a href="{{ url('/band', ['column'=>'name', 'sort'=>'desc'] ) }}">Band Name</a>
+                            <a href="{{ url('/?column=name&order=desc') }}">Band Name</a>
                         @else
-                            <a href="{{ url('/band', ['column'=>'name', 'sort'=>'asc'] ) }}">Band Name</a>
+                            <a href="{{ url('/?column=name&order=asc') }}">Band Name</a>
                         @endif
                     </th>
                     <th>
                         @if ($column == 'website' && $sort == 'asc')
-                            <a href="{{ url('/band', ['column'=>'website', 'sort'=>'desc'] ) }}">Website</a>
+                            <a href="{{ url('/?column=website&order=desc') }}">Website</a>
                         @else
-                            <a href="{{ url('/band', ['column'=>'website', 'sort'=>'asc'] ) }}">Website</a>
+                            <a href="{{ url('/?column=website&order=asc') }}">Website</a>
                         @endif
                     </th>
                     <th>
                         @if ($column == 'start_date' && $sort == 'asc')
-                            <a href="{{ url('/band', ['column'=>'start_date', 'sort'=>'desc'] ) }}">Start Date</a>
+                            <a href="{{ url('/?column=start_date&order=desc') }}">Start Date</a>
                         @else
-                        <a href="{{ url('/band', ['column'=>'start_date', 'sort'=>'asc'] ) }}">Start Date</a>
+                            <a href="{{ url('/?column=start_date&order=asc') }}">Start Date</a>
                         @endif
                     </th>
                     <th>
                         @if ($column == 'still_active' && $sort == 'asc')
-                            <a href="{{ url('/band', ['column'=>'still_active', 'sort'=>'desc'] ) }}">Active</a>
+                            <a href="{{ url('/?column=still_active&order=desc') }}">Active</a>
                         @else
-                        <a href="{{ url('/band', ['column'=>'still_active', 'sort'=>'asc'] ) }}">Active</a>
+                            <a href="{{ url('/?column=still_active&order=asc') }}">Active</a>
                         @endif
                     </th>
                 </tr>

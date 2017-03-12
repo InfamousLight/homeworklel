@@ -19,18 +19,18 @@ Route::get('album', 'AlbumController@index');
 Route::get('band/create-band', function() { return View::make('create-band'); });
 Route::get('album/create-album', 'AlbumController@createView');
 
-//Edit Routes
-Route::get('/band/edit-band/{bandId}', 'BandController@edit');
-Route::get('/album/edit-album/{albumId}', 'AlbumController@edit');
+//Edit Views
+Route::get('band/edit-band/{bandId}', 'BandController@editView');
+Route::get('album/edit-album/{albumId}', 'AlbumController@editView');
+
+////Edit Routes
+Route::post('/band/edit-band/', 'BandController@edit');
+Route::post('/album/edit-album/', 'AlbumController@edit');
 
 //Delete Routes
-Route::post('/album/delete-album/', 'AlbumController@delete');
 Route::post('/band/delete-band/', 'BandController@delete');
+Route::post('/album/delete-album/', 'AlbumController@delete');
 
 //Create Routes
-Route::post('/album/create-album/', 'AlbumController@create');
 Route::post('/band/create-band/', 'BandController@create');
-
-//Sorted Routes
-Route::get('/band/{column}/{sort}', 'BandController@index');
-Route::get('/album/{column}/{sort}', 'AlbumController@index');
+Route::post('/album/create-album/', 'AlbumController@create');

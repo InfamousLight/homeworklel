@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use Carbon\Carbon;
 
 class BandController extends Controller
 {
-    public function index($column=null, $sort=null)
+    public function index(Request $request)
     {
+        $column = $request->input('column');
+        $sort = $request->input('order');
+
         if($column && $sort) {
             $bands = DB::table('Band')->select()->orderBy($column, $sort)->get();
         }
@@ -18,6 +20,12 @@ class BandController extends Controller
         }
 
         return view('band')->with('bands', $bands)->with('column', $column)->with('sort', $sort);
+    }
+
+    public function editView($bandId)
+    {
+        $band = DB::table('Band')->select()->where('id', '=', $bandId)->first();
+        return view('edit-band')->with('band', $band);
     }
 
     public function create(Request $request)
@@ -32,10 +40,17 @@ class BandController extends Controller
         return $this->index();
     }
 
-    public function edit($bandId)
+    public function edit(Request $request)
     {
-        $band = DB::table('Band')->where('id', $bandId)->first();
-        return view('edit-band')->with('band', $band);
+        $bandId = $request->input('bandId');
+        DB::table('Band')->where('id', '=', $bandId)
+            ->update([
+                'name' => $request->input('band-name'),
+                'website' => $request->input('website'),
+                'start_date' => $request->input('start-date'),
+                'still_active' => $request->input('active'),
+            ]);
+        return $this->index();
     }
 
     public function delete(Request $request)

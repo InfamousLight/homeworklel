@@ -7,8 +7,11 @@ use DB;
 
 class AlbumController extends Controller
 {
-    public function index($column=null, $sort=null)
+    public function index(Request $request)
     {
+        $column = $request->input('column');
+        $sort = $request->input('order');
+
         if($column && $sort) {
             $albums = DB::table('Album')->select()->orderBy($column, $sort)->get();
         }
