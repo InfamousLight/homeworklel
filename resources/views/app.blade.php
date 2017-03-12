@@ -19,7 +19,7 @@
 
 <body>
 <nav class="navbar-default navbar-static-top">
-    <a class="navbar-brand" href="{{ url('/') }}">
+    <a class="navbar-brand">
         Bands Example
     </a>
     <div class="main-container">
@@ -36,10 +36,10 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Bands</a>
+                    <a href="{{ url('/') }}" class="dropdown-toggle" role="button" aria-expanded="false">Bands</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Albums</a>
+                    <a href="{{ url('/album') }}" class="dropdown-toggle" role="button" aria-expanded="false">Albums</a>
                 </li>
             </ul>
         </div>
