@@ -4,15 +4,19 @@
 @stop
 @section('content')
     <div class="container">
+        <div>
+            <h1>Bands</h1>
+            <a href="{{ url('/band/create-band/') }}"><button type="button" class="btn btn-success">Create Band</button></a>
+        </div>
         <table class="table">
             <thead>
-            <tr>
-                <th>#</th>
-                <th>Band Name</th>
-                <th>Website</th>
-                <th>Start Date</th>
-                <th>Active</th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Band Name</th>
+                    <th>Website</th>
+                    <th>Start Date</th>
+                    <th>Active</th>
+                </tr>
             </thead>
             <tbody>
                 @foreach($bands as $band)
@@ -28,7 +32,7 @@
                     @endif
                     <td>
                         <a href="{{ url('/band/edit-band/' . $band->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
-                        <button id="{{$band->id}}" type = "button" class="delete btn btn-danger delete-band">Delete</button>
+                        <button id="{{$band->id}}" type="button" class="delete btn btn-danger delete-band">Delete</button>
                     </td>
                 </tr>
                 @endforeach

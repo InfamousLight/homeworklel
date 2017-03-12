@@ -13,6 +13,28 @@ class AlbumController extends Controller
         return view('album')->with('albums', $albums);
     }
 
+    public function create(Request $request)
+    {
+        DB::table('Album')->insert([
+            'band_id' => $request->input('band-id'),
+            'name' =>  $request->input('album-name'),
+            'recorded_date' => $request->input('recorded-date'),
+            'release_date' => $request->input('release-date'),
+            'number_of_tracks' => $request->input('number-of-tracks'),
+            'label' =>  $request->input('label'),
+            'producer' =>  $request->input('producer'),
+            'genre' =>  $request->input('genre'),
+        ]);
+
+        return $this->index();
+    }
+
+    public function createView()
+    {
+        $bands = DB::table('Band')->select('id', 'name')->get();
+        return view('create-album')->with('bands', $bands);
+    }
+
     public function edit($albumId)
     {
         $album = DB::table('Album')->where('id', $albumId)->first();

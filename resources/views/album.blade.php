@@ -4,18 +4,22 @@
 @stop
 @section('content')
     <div class="container">
+        <div>
+            <h1>Albums</h1>
+            <a href="{{ url('/album/create-album/') }}"><button type="button" class="btn btn-success">Create Album</button></a>
+        </div>
         <table class="table">
             <thead>
-            <tr>
-                <th>#</th>
-                <th>Album Name</th>
-                <th>Recorded Date</th>
-                <th>Release Date</th>
-                <th>Number of Tracks</th>
-                <th>Label</th>
-                <th>Producer</th>
-                <th>Genre</th>
-            </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Album Name</th>
+                    <th>Recorded Date</th>
+                    <th>Release Date</th>
+                    <th>Number of Tracks</th>
+                    <th>Label</th>
+                    <th>Producer</th>
+                    <th>Genre</th>
+                </tr>
             </thead>
             <tbody>
                 @foreach($albums as $album)
@@ -30,7 +34,7 @@
                     <td>{{$album->genre}}</td>
                     <td>
                         <a href="{{ url('/album/edit-album/' . $album->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
-                        <button id="{{$album->id}}" type = "button" class="delete btn btn-danger delete-album">Delete</button>
+                        <button id="{{$album->id}}" type="button" class="delete btn btn-danger delete-album">Delete</button>
                     </td>
                 </tr>
                 @endforeach
