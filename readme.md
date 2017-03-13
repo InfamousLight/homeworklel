@@ -2,11 +2,13 @@ Feel free to use docker if you want, it has the setup for it.
 
 If you choose to do so I was a little lazy so steps:
 
-1) docker exec -it nameofcontainer bash
+1) docker-compose up -d
 
-2) php7.0-fpm start
+2) docker exec -it nameofcontainer bash
 
-3) find nginx.conf changes sendfile off
+3) php7.0-fpm start
+
+4) find nginx.conf changes sendfile off
 
 This runs on nginx using PHP7 with dockerfiles
 
