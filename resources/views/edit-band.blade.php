@@ -12,7 +12,7 @@
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="band-name">Band Name</label>
-                <input class="form-control" id="band-name" name="band-name" placeholder="Enter Band Name" value="{{$band->name}}">
+                <input class="form-control" id="band-name" name="band-name" placeholder="Enter Band Name" value="{{$band->name}}" required>
             </div>
             <div class="form-group">
                 <label for="website">Website</label>
@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="active">Active</label>
-                <input class="form-control" id="active" name="active" placeholder="Enter 1 or 0 for Active" value={{$band->still_active}}>
+                <input type="number" class="form-control" id="active" name="active" placeholder="Enter 1 or 0 for Active" value={{$band->still_active}}>
             </div>
             <br><br>
             <input type="hidden" name="bandId" value="{{$band->id}}" />
