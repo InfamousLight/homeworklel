@@ -4,9 +4,11 @@
 @stop
 @section('content')
     <div class="container">
-        <div>
+        <div class="band-list-header-container">
             <h1>Bands</h1>
-            <a href="{{ url('/band/create-band/') }}"><button type="button" class="btn btn-success">Create Band</button></a>
+            <div class="band-list-create-row">
+                <a href="{{ url('/band/create-band/') }}"><button type="button" class="btn btn-success">Create Band</button></a>
+            </div>
         </div>
         <table class="table">
             <thead>

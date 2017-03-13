@@ -15,6 +15,12 @@
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/sweetalert.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/styles.css') }}" rel="stylesheet">
+
+    <script type="text/javascript" src={{ URL::asset('js/jquery-3.1.1.min.js') }}></script>
+    <script type="text/javascript" src={{ URL::asset('js/bootstrap.min.js') }}></script>
+    <script type="text/javascript" src={{ URL::asset('js/sweetalert.min.js') }}></script>
+    <script type="text/javascript" src={{ URL::asset('js/global.js') }}></script>
+    @yield('javascript')
 </head>
 
 <body>
@@ -46,12 +52,6 @@
     </div>
 </nav>
 @yield('content')
-
-<script type="text/javascript" src={{ URL::asset('js/jquery-3.1.1.min.js') }}></script>
-<script type="text/javascript" src={{ URL::asset('js/bootstrap.min.js') }}></script>
-<script type="text/javascript" src={{ URL::asset('js/sweetalert.min.js') }}></script>
-<script type="text/javascript" src={{ URL::asset('js/global.js') }}></script>
-@yield('javascript')
 
 </body>
 </html>

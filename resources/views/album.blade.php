@@ -4,9 +4,11 @@
 @stop
 @section('content')
     <div class="container">
-        <div>
+        <div class="album-list-header-container">
             <h1>Albums</h1>
-            <a href="{{ url('/album/create-album/') }}"><button type="button" class="btn btn-success">Create Album</button></a>
+            <div class="album-list-create-row">
+                <a href="{{ url('/album/create-album/') }}"><button type="button" class="btn btn-success">Create Album</button></a>
+            </div>
         </div>
         <table class="table">
             <thead>
