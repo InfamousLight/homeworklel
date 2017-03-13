@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Album - {{$album->name}}</h1><br><br>
+        <h1>Edit Album - {{$album->name}}</h1>
+        <h4>Band: {{$belongsToBand->name}}</h4>
+        <br><br>
         <form method="POST" action="{{ action('AlbumController@create') }}" role="form">
             {!! csrf_field() !!}
             <div class="form-group">

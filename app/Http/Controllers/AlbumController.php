@@ -12,13 +12,7 @@ class AlbumController extends Controller
     {
         $column = $request->input('column');
         $sort = $request->input('order');
-
-        if($column && $sort) {
-            $albums = Album::with('Band')->orderBy($column, $sort)->get();
-        }
-        else {
-            $albums = Album::with('Band')->get();
-        }
+        ($column && $sort) ? $albums = Album::with('Band')->orderBy($column, $sort)->get() : $albums = Album::with('Band')->get();
 
         return view('album')->with('albums', $albums)->with('column', $column)->with('sort', $sort);
     }

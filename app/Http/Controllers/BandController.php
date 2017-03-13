@@ -12,13 +12,7 @@ class BandController extends Controller
     {
         $column = $request->input('column');
         $sort = $request->input('order');
-
-        if($column && $sort) {
-            $bands = Band::with('Album')->orderBy($column, $sort)->get();
-        }
-        else {
-            $bands = Band::with('Album')->get();
-        }
+        ($column && $sort) ? $bands = Band::with('Album')->orderBy($column, $sort)->get() : $bands = Band::with('Album')->get();
 
         return view('band')->with('bands', $bands)->with('column', $column)->with('sort', $sort);
     }
@@ -26,7 +20,8 @@ class BandController extends Controller
     public function editView($bandId)
     {
         $band = DB::table('Band')->select()->where('id', '=', $bandId)->first();
-        return view('edit-band')->with('band', $band);
+        $albums = Band::find($bandId)->album()->get();
+        return view('edit-band')->with('band', $band)->with('albums', $albums);
     }
 
     public function create(Request $request)

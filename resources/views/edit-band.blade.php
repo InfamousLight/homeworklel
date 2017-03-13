@@ -2,7 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Band - {{$band->name}}</h1><br><br>
+        <h1>Edit Band - {{$band->name}}</h1>
+        <h3>Albums</h3>
+        @foreach($albums as $album)
+            <h4>{{$album->name}}</h4>
+        @endforeach
+        <br><br>
         <form method="POST" action="{{ action('BandController@edit') }}" role="form">
             {!! csrf_field() !!}
             <div class="form-group">
