@@ -17,13 +17,20 @@ class AlbumController extends Controller
         $bandId = $request->input('band_id');
 
         if($column && $sort) {
-            $albums = Album::with('Band')->orderBy($column, $sort)->get();
-        }
-        else if($bandId) {
-            $albums = Album::with('Band')->where('band_id', '=', $bandId)->get();
+            if($bandId) {
+                $albums = Album::with('Band')->where('band_id', '=', $bandId)->orderBy($column, $sort)->get();
+            }
+            else {
+                $albums = Album::with('Band')->orderBy($column, $sort)->get();
+            }
         }
         else {
-            $albums = Album::with('Band')->get();
+            if($bandId) {
+                $albums = Album::with('Band')->where('band_id', '=', $bandId)->get();
+            }
+            else{
+                $albums = Album::with('Band')->get();
+            }
         }
 
         return view('album')
