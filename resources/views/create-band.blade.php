@@ -1,5 +1,7 @@
 @extends('app')
-
+@section('javascript')
+    <script type="text/javascript" src={{ URL::asset('js/BandForm.js') }}></script>
+@stop
 @section('content')
     <div class="container">
         <h1>Create Band</h1><br><br>

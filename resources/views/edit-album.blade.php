@@ -1,5 +1,7 @@
 @extends('app')
-
+@section('javascript')
+    <script type="text/javascript" src={{ URL::asset('js/AlbumForm.js') }}></script>
+@stop
 @section('content')
     <div class="container">
         <h1>Edit Album - {{$album->name}}</h1>
