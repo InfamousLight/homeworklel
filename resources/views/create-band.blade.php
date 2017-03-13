@@ -7,7 +7,7 @@
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="band-name">Band Name</label>
-                <input class="form-control" id="band-name" name="band-name" placeholder="Enter Band Name">
+                <input class="form-control" id="band-name" name="band-name" placeholder="Enter Band Name" required>
             </div>
             <div class="form-group">
                 <label for="website">Website</label>
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label for="active">Active</label>
-                <input class="form-control" id="active" name="active" placeholder="Enter 1 or 0 for Active">
+                <input type="number" class="form-control" id="active" name="active" placeholder="Enter 1 or 0 for Active">
             </div>
             <br><br>
             <button type="submit" class="btn btn-primary">Submit</button>

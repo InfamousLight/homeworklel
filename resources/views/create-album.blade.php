@@ -7,7 +7,7 @@
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="band-id">Select Band</label>
-                <select class="form-control" id="band-id" name="band-id">
+                <select class="form-control" id="band-id" name="band-id" required>
                     @foreach($bands as $band)
                         <option value={{ $band->id }}>{{ $band->name }}</option>
                     @endforeach
@@ -15,7 +15,7 @@
             </div>
             <div class="form-group">
                 <label for="album-name">Album Name</label>
-                <input class="form-control" id="album-name" name="album-name" placeholder="Enter Band Name">
+                <input class="form-control" id="album-name" name="album-name" placeholder="Enter Band Name" required>
             </div>
             <div class="form-group">
                 <label for="recorded-date">Recorded Date</label>
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="number-of-tracks">Number of Tracks</label>
-                <input class="form-control" id="number-of-tracks" name="number-of-tracks" placeholder="Enter Number of Tracks">
+                <input type="number" class="form-control" id="number-of-tracks" name="number-of-tracks" placeholder="Enter Number of Tracks">
             </div>
             <div class="form-group">
                 <label for="label">Label</label>
