@@ -46,6 +46,9 @@
                             <a href="{{ url('/?column=still_active&order=asc') }}">Active</a>
                         @endif
                     </th>
+                    <th>
+                        Albums
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +63,13 @@
                     @else
                         <td>No</td>
                     @endif
+                    <td>
+                        <ol>
+                            @foreach($band->album as $album)
+                                <li>{{$album->name}}</li>
+                            @endforeach
+                        </ol>
+                    </td>
                     <td>
                         <a href="{{ url('/band/edit-band/' . $band->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
                         <button id="{{$band->id}}" type="button" class="delete btn btn-danger delete-band">Delete</button>

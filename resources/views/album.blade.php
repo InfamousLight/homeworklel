@@ -67,6 +67,13 @@
                             <a href="{{ url('/album?column=genre&order=asc') }}">Genre</a>
                         @endif
                     </th>
+                    <th>
+                        @if ($column == 'band_id' && $sort == 'asc')
+                            <a href="{{ url('/album?column=band_id&order=desc') }}">Band</a>
+                        @else
+                            <a href="{{ url('/album?column=band_id&order=asc') }}">Band</a>
+                        @endif
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -80,6 +87,7 @@
                     <td>{{$album->label}}</td>
                     <td>{{$album->producer}}</td>
                     <td>{{$album->genre}}</td>
+                    <td>{{$album->band->name}}</td>
                     <td>
                         <a href="{{ url('/album/edit-album/' . $album->id) }}"><button type="button" class="btn btn-primary">Edit</button></a>
                         <button id="{{$album->id}}" type="button" class="delete btn btn-danger delete-album">Delete</button>

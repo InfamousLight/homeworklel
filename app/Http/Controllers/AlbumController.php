@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Album;
 
 class AlbumController extends Controller
 {
@@ -13,10 +14,10 @@ class AlbumController extends Controller
         $sort = $request->input('order');
 
         if($column && $sort) {
-            $albums = DB::table('Album')->select()->orderBy($column, $sort)->get();
+            $albums = Album::with('Band')->orderBy($column, $sort)->get();
         }
         else {
-            $albums = DB::table('Album')->select()->get();
+            $albums = Album::with('Band')->get();
         }
 
         return view('album')->with('albums', $albums)->with('column', $column)->with('sort', $sort);
@@ -24,18 +25,18 @@ class AlbumController extends Controller
 
     public function create(Request $request)
     {
-        DB::table('Album')->insert([
-            'band_id' => $request->input('band-id'),
-            'name' =>  $request->input('album-name'),
-            'recorded_date' => $request->input('recorded-date'),
-            'release_date' => $request->input('release-date'),
-            'number_of_tracks' => $request->input('number-of-tracks'),
-            'label' =>  $request->input('label'),
-            'producer' =>  $request->input('producer'),
-            'genre' =>  $request->input('genre'),
-        ]);
+        $album = new Album;
+        $album->band_id = $request->input('band-id');
+        $album->name = $request->input('album-name');
+        $album->recorded_date = $request->input('recorded-date');
+        $album->release_date = $request->input('release-date');
+        $album->number_of_tracks = $request->input('number-of-tracks');
+        $album->label = $request->input('label');
+        $album->producer = $request->input('producer');
+        $album->genre = $request->input('genre');
+        $album->save();
 
-        return $this->index();
+        return $this->index($request);
     }
 
     public function createView()
@@ -44,10 +45,30 @@ class AlbumController extends Controller
         return view('create-album')->with('bands', $bands);
     }
 
-    public function edit($albumId)
+    public function editView($albumId)
     {
-        $album = DB::table('Album')->where('id', $albumId)->first();
-        return view('edit-album')->with('album', $album);
+        $album = DB::table('Album')->select()->where('id', '=', $albumId)->first();
+        $belongsToBand = Album::find($albumId)->band()->first();
+        $bands = DB::table('Band')->select('id', 'name')->get();
+
+        return view('edit-album')->with('album', $album)->with('belongsToBand', $belongsToBand)->with('bands', $bands);
+    }
+
+    public function edit(Request $request)
+    {
+        $albumId = $request->input('albumId');
+        DB::table('Album')->where('id', '=', $albumId)
+            ->update([
+                'band_id' => $request->input('band-id'),
+                'name' =>  $request->input('album-name'),
+                'recorded_date' => $request->input('recorded-date'),
+                'release_date' => $request->input('release-date'),
+                'number_of_tracks' => $request->input('number-of-tracks'),
+                'label' =>  $request->input('label'),
+                'producer' =>  $request->input('producer'),
+                'genre' =>  $request->input('genre'),
+            ]);
+        return $this->index($request);
     }
 
     public function delete(Request $request)

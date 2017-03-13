@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Band</h1><br><br>
+        <h1>Edit Band - {{$band->name}}</h1><br><br>
         <form method="POST" action="{{ action('BandController@edit') }}" role="form">
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="band-name">Band Name</label>
-                <input class="form-control" id="band-name" name="band-name" placeholder="Enter Band Name" value={{$band->name}}>
+                <input class="form-control" id="band-name" name="band-name" placeholder="Enter Band Name" value="{{$band->name}}">
             </div>
             <div class="form-group">
                 <label for="website">Website</label>

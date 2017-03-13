@@ -20,6 +20,6 @@ class Band extends Model
 
     public function album()
     {
-        return $this->hasMany('App\Album');
+        return $this->hasMany('App\Album', 'band_id', 'id');
     }
 }
