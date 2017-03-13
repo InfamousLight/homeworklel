@@ -8,7 +8,7 @@ If you choose to do so I was a little lazy so steps:
 
 3) php7.0-fpm start
 
-4) find nginx.conf changes sendfile off
+4) find nginx.conf change sendfile off
 
 This runs on nginx using PHP7 with dockerfiles
 
