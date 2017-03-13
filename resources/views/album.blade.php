@@ -10,6 +10,18 @@
                 <a href="{{ url('/album/create-album/') }}"><button type="button" class="btn btn-success">Create Album</button></a>
             </div>
         </div>
+        <form method="GET" action="{{ action('AlbumController@index') }}" role="form">
+            <div class="form-group">
+                <label for="band-id">Select Band to Filter</label>
+                <select class="form-control" id="band_id" name="band_id">
+                    <option disabled selected value> -- select to filter -- </option>
+                    @foreach($bands as $band)
+                        <option value={{ $band->id }}>{{ $band->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
         <table class="table">
             <thead>
                 <tr>

@@ -5,16 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Album;
+use App\Band;
 
 class AlbumController extends Controller
 {
     public function index(Request $request)
     {
+        $bands = Band::all();
         $column = $request->input('column');
         $sort = $request->input('order');
-        ($column && $sort) ? $albums = Album::with('Band')->orderBy($column, $sort)->get() : $albums = Album::with('Band')->get();
+        $bandId = $request->input('band_id');
 
-        return view('album')->with('albums', $albums)->with('column', $column)->with('sort', $sort);
+        if($column && $sort) {
+            $albums = Album::with('Band')->orderBy($column, $sort)->get();
+        }
+        else if($bandId) {
+            $albums = Album::with('Band')->where('band_id', '=', $bandId)->get();
+        }
+        else {
+            $albums = Album::with('Band')->get();
+        }
+
+        return view('album')
+            ->with('albums', $albums)
+            ->with('column', $column)
+            ->with('sort', $sort)
+            ->with('bands', $bands);
     }
 
     public function create(Request $request)
